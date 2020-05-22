@@ -12,7 +12,11 @@ router.beforeEach((to, from, next) => {
             next()
             return
         }
-        next('/login')
+        // Either
+        // localStorage.setItem('post_login_path', from.path)
+        // next('/login')
+        // Or
+        next(`/login?next=${to.path}`)
     } else {
         next()
     }

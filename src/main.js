@@ -4,18 +4,22 @@ import { Auth } from '@axioms/web-js';
 import router from '@/router';
 import Default from '@/layouts/Default.vue';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import VueClipboards from 'vue-clipboards';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import '@/styles/custom.scss';
 
 // Install BootstrapVue
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue);
 
 // Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin)
+Vue.use(IconsPlugin);
+
+// Vue clipboard
+Vue.use(VueClipboards);
 
 // Production tip
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 // Layout
 Vue.component("default-layout", Default);
@@ -33,8 +37,12 @@ const auth = new Auth({
 
 Vue.prototype.$auth = auth;
 
-Vue.prototype.$role = function(required_scopes) {
-    return auth.session.hasAccessScope(required_scopes);
+Vue.prototype.$role = function(required_roles) {
+    return auth.session.hasRole(required_roles);
+};
+
+Vue.prototype.$scope = function(required_scopes) {
+    return auth.session.hasScope(required_scopes);
 };
 
 new Vue({
