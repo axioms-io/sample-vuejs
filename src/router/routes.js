@@ -10,6 +10,17 @@ export const routes = [{
         }
     },
     {
+        path: '/passwordless',
+        name: 'passwordless',
+        component: () =>
+            import ('@/views/Passwordless.vue'),
+        meta: {
+            title: 'Passwordless Login',
+            requiresAuth: false,
+            layout: 'default'
+        }
+    },
+    {
         path: '/dashboard',
         name: 'dashboard',
         component: () =>
