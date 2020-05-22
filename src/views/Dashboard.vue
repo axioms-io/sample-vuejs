@@ -28,7 +28,7 @@
       </b-button>
       <b-alert variant="info" show style="margin-top:10px;" v-if="get_access_token">
         <h6>Access Token</h6>
-        <pre class="nselect">{{get_access_token}}</pre>
+        <pre>{{get_access_token}}</pre>
         <b-button v-clipboard="onCopyAction" @success="onCopySuccess">Copy</b-button>
       </b-alert>
     </b-jumbotron>
